@@ -14,6 +14,15 @@ class ButtonComponent extends Component {
 
     this.showColorPicker = this.showColorPicker.bind(this);
     this.handleOutsidePickerClose = this.handleOutsidePickerClose.bind(this);
+    this.shiftCFunc = this.shiftCFunc.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("keydown", this.shiftCFunc, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.shiftCFunc, false);
   }
 
   showColorPicker = () => {
@@ -42,6 +51,23 @@ class ButtonComponent extends Component {
 
     this.showColorPicker();
   }
+
+  handleOutsidePickerClose = (event) => {
+    // This is to ignore the click on the component picker.
+    if (this.node.contains(event.target)) {
+      return;
+    }
+
+    this.showColorPicker();
+  };
+
+  shiftCFunc = (event) => {
+    // When this keys pressed will do this:
+    if (event.keyCode === 17) {
+      console.log(event.which);
+      this.showColorPicker();
+    }
+  };
 
   render() {
     return (
