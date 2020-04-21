@@ -14,7 +14,7 @@ class ColorPicker extends Component {
 
   handleChangeComplete = (color) => {
     PubSub.publish("colorChange", { color: color, isText: this.props.isText });
-console.log(color)
+    // console.log(color)
     this.setState({ background: color.rgb });
   };
 

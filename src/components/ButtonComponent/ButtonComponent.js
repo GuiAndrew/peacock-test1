@@ -25,16 +25,8 @@ class ButtonComponent extends Component {
     window.removeEventListener("keydown", this.shiftCFunc, false);
   }
 
-
-  componentDidUpdate(prevProps){
-    console.log("montou")
-    if(this.props !== prevProps){
-    this.showColorPickerKeyboard();
-  }
-  }
-
-showColorPicker = (show) => {
-    if (show === "hidden") {
+  showColorPicker = () => {
+    if (!this.state.visibile) {
       this.setState({
         show: "visible",
         visibile: true,
@@ -60,27 +52,12 @@ showColorPicker = (show) => {
   };
 
   shiftCFunc = (event) => {
+    // When this keys pressed will do this:
     if (event.keyCode === 17) {
-      //Do whatever when esc is pressed
-      console.log(event.which);
+      // console.log(event.keyCode);
       this.showColorPicker();
     }
   };
-
-  showColorPickerKeyboard=()=>{
-    if (this.props.keyPressedBackgroundColor===true||this.props.keyPressedTextColor===true){
-      console.log("true")
-      this.setState({
-        show: "visible",
-        visibile: true,
-      });
-    } else
-    this.setState({
-      show: "hidden",
-      visibile: false,
-    });
-
-  }
 
   render() {
     return (
@@ -90,7 +67,7 @@ showColorPicker = (show) => {
           this.node = node;
         }}
       >
-        <Button className="m-2" onClick={()=>this.showColorPicker(this.state.show)}>
+        <Button className="m-2" onClick={this.showColorPicker}>
           {this.props.title}
         </Button>
         <div

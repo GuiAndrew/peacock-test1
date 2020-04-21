@@ -8,8 +8,6 @@ class App extends Component {
   state = {
     colorText: "black",
     backgroundColor: "white",
-    keyPressedBackgroundColor: false,
-    keyPressedTextColor: false,
   };
 
   componentDidMount() {
@@ -33,7 +31,7 @@ class App extends Component {
     const colorTitle = "Color";
 
     return (
-      <div tabIndex={-1} onKeyDown={(event) => this.handleKey(event)}>
+      <>
         <div
           className="displayText"
           style={{
@@ -54,17 +52,12 @@ class App extends Component {
           <ButtonComponent
             color={backgroundColorProp}
             title={backgroundColorTitle}
-            keyPressedBackgroundColor={this.state.keyPressedBackgroundColor}
           />
         </div>
         <div className="divButtonColor">
-          <ButtonComponent
-            color={colorProp}
-            title={colorTitle}
-            keyPressedTextColor={this.state.keyPressedTextColor}
-          />
+          <ButtonComponent color={colorProp} title={colorTitle} />
         </div>
-      </div>
+      </>
     );
   }
 }
