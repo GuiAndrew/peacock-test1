@@ -52,15 +52,6 @@ class ButtonComponent extends Component {
     this.showColorPicker();
   }
 
-  handleOutsidePickerClose = (event) => {
-    // This is to ignore the click on the component picker.
-    if (this.node.contains(event.target)) {
-      return;
-    }
-
-    this.showColorPicker();
-  };
-
   shiftCFunc = (event) => {
     // When this keys pressed will do this:
     if (event.keyCode === 17) {
