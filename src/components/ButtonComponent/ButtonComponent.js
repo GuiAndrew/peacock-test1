@@ -10,19 +10,21 @@ class ButtonComponent extends Component {
     this.state = {
       show: "hidden",
       visibile: false,
+      infoKeyboardShortcutBackground: false,
+      infoKeyboardShortcutTextColor: false,
     };
 
     this.showColorPicker = this.showColorPicker.bind(this);
     this.handleOutsidePickerClose = this.handleOutsidePickerClose.bind(this);
-    this.shiftCFunc = this.shiftCFunc.bind(this);
+    this.keyboardShortcutsFunc = this.keyboardShortcutsFunc.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("keydown", this.shiftCFunc, false);
+    window.addEventListener("keydown", this.keyboardShortcutsFunc, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("keydown", this.shiftCFunc, false);
+    window.removeEventListener("keydown", this.keyboardShortcutsFunc, false);
   }
 
   showColorPicker = () => {
@@ -30,6 +32,8 @@ class ButtonComponent extends Component {
       this.setState({
         show: "visible",
         visibile: true,
+        infoKeyboardShortcutBackground: this.props
+          .infoKeyboardShortcutBackground,
       });
 
       window.addEventListener("click", this.handleOutsidePickerClose, false); // Window is like the document in react
@@ -37,6 +41,7 @@ class ButtonComponent extends Component {
       this.setState({
         show: "hidden",
         visibile: false,
+        infoKeyboardShortcutTextColor: this.props.infoKeyboardShortcutTextColor,
       });
 
       window.removeEventListener("click", this.handleOutsidePickerClose, false); // Window is like the document in react
@@ -51,11 +56,28 @@ class ButtonComponent extends Component {
     this.showColorPicker();
   };
 
-  shiftCFunc = (event) => {
-    // When this keys pressed will do this:
-    if (event.keyCode === 17) {
+  keyboardShortcutsFunc = (event) => {
+    // This will be ctrl + shift + h
+    if (event.ctrlKey && event.shiftKey && event.keyCode === 72) {
       // console.log(event.keyCode);
-      this.showColorPicker();
+      this.setState({
+        infoKeyboardShortcutBackground: this.props
+          .infoKeyboardShortcutBackground,
+      });
+      if (this.state.infoKeyboardShortcutBackground) {
+        this.showColorPicker();
+      }
+    }
+
+    // This will be ctrl + shift + k
+    if (event.ctrlKey && event.shiftKey && event.keyCode === 75) {
+      // console.log(event.keyCode);
+      this.setState({
+        infoKeyboardShortcutTextColor: this.props.infoKeyboardShortcutTextColor,
+      });
+      if (this.state.infoKeyboardShortcutTextColor) {
+        this.showColorPicker();
+      }
     }
   };
 

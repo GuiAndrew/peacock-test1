@@ -28,7 +28,9 @@ class App extends Component {
     const backgroundColorProp = "backgroundColor";
     const backgroundColorTitle = "Background Color";
     const colorProp = "color";
-    const colorTitle = "Color";
+    const colorTitle = "Text Color";
+    const infoKeyboardShortcutBackground = true;
+    const infoKeyboardShortcutTextColor = true;
 
     return (
       <>
@@ -52,10 +54,15 @@ class App extends Component {
           <ButtonComponent
             color={backgroundColorProp}
             title={backgroundColorTitle}
+            infoKeyboardShortcutBackground={infoKeyboardShortcutBackground}
           />
         </div>
         <div className="divButtonColor">
-          <ButtonComponent color={colorProp} title={colorTitle} />
+          <ButtonComponent
+            color={colorProp}
+            title={colorTitle}
+            infoKeyboardShortcutTextColor={infoKeyboardShortcutTextColor}
+          />
         </div>
       </>
     );
