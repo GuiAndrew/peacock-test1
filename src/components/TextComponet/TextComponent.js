@@ -23,7 +23,6 @@ class TextComponent extends Component {
     super(props);
     this.state = {
       inputValue: this.defaultText,
-      
     };
   }
 
@@ -32,25 +31,26 @@ class TextComponent extends Component {
       inputValue: evt.target.value,
     });
   };
-  clearText=()=>{
-    this.setState({inputValue: ""})
-  }
+  clearText = () => {
+    this.setState({ inputValue: "" });
+  };
   render() {
     return (
       <>
         <div className="displayText">
           <p style={{ color: this.props.colorText }}>{this.state.inputValue}</p>
         </div>
-              <div className="textComponent">
-
-        <input
-          className="form-control"
-          value={this.state.inputValue}
-          onChange={this.updateInputValue}
-          id="textValue"
-        />
-        <Button onClick={this.clearText}>Clear Text</Button>
-      </div>
+        <div className="textComponent fixed-bottom">
+          <input
+            className="form-control"
+            value={this.state.inputValue}
+            onChange={this.updateInputValue}
+            id="textValue"
+          />
+          <Button className="heightButton" onClick={this.clearText}>
+            Clear Text
+          </Button>
+        </div>
       </>
     );
   }

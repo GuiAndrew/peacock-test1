@@ -1,9 +1,18 @@
+html,
+body,
+#root,
+.App {
+    height: 100%;
+    background: #e6e6e6;
+}
+
 .App {
     text-align: center;
 }
 
 .displayText {
-    width: 80%;
+    width: 85%;
+    height: 65%;
     margin: auto;
     word-wrap: break-word;
     overflow: auto;

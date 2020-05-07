@@ -1,9 +1,18 @@
 .textComponent {
     display: flex;
-    padding-right: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 .textComponent Button {
-    position: fixed;
-    right: 0;
+    margin-left: 20px;
+}
+
+#textValue {
+    width: 50%;
+    margin-bottom: 7px;
+}
+
+.heightButton {
+    margin-bottom: 7px;
 }

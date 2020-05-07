@@ -22,6 +22,20 @@ class App extends Component {
         });
       }
     });
+
+    PubSub.subscribe("colorButton", (msg, data) => {
+      if (data.isText === "color") {
+        this.setState({
+          colorText: data.color,
+        });
+        console.log(data);
+      } else {
+        this.setState({
+          backgroundColor: data.background,
+        });
+        // console.log(this.state.backgroundColor);
+      }
+    });
   }
 
   render() {
@@ -41,14 +55,7 @@ class App extends Component {
             color: this.state.colorText,
           }}
         >
-          <div
-            style={{
-              backgroundcolor: this.state.backgroundColor,
-              color: this.state.colorText,
-            }}
-          >
-            <TextComponent color={this.state.colorText}></TextComponent>
-          </div>
+          <TextComponent color={this.state.colorText}></TextComponent>
         </div>
         <div className="divButtonBackgroundColor">
           <ButtonComponent
